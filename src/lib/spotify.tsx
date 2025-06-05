@@ -22,7 +22,6 @@ export async function getToken() : Promise<string> {
     if(!res.ok){
         throw new Error(`Failed to fetch Spotify token: ${res.status} ${res.statusText}`);
     }
-
     const data = await res.json();
     if(!data.access_token){
         throw new Error('No access token returned from Spotify');

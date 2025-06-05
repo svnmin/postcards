@@ -1,15 +1,7 @@
 'use client';
 import { useState } from 'react';
+import { Track } from '@/types/spotifyTypes';
 
-type Track = {
-  id: string;
-  name: string;
-  artists: string;
-  album: string;
-  preview_url: string | null;
-  external_url: string;
-  image: string | null;
-};
 
 export default function Postcard02() {
   const [query, setQuery] = useState('');
@@ -18,7 +10,7 @@ export default function Postcard02() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const searchSongs = async () => {
+  const trackSearch = async () => {
     if (!query) return;
 
     setLoading(true);
@@ -30,6 +22,7 @@ export default function Postcard02() {
       }
       const data = await res.json();
       setResults(data.results);
+      console.log(data.results)
     } catch (err) {
       setError('Something went wrong.');
     } finally {
@@ -40,7 +33,7 @@ export default function Postcard02() {
   return (
     <div className="p-6 font-mono">
       <div className="mb-4">
-        <label className="block text-lime-600 text-lg mb-2">what's the song?</label>
+        <label className="block text-white text-lg mb-2">what's the song?</label>
         <div className="flex items-center gap-2">
           <input
             type="text"
@@ -49,8 +42,8 @@ export default function Postcard02() {
             className="flex-1 px-4 py-2 border border-gray-300 rounded-full"
           />
           <button
-            onClick={searchSongs}
-            className="bg-pink-400 text-white px-4 py-2 rounded-full"
+            onClick={trackSearch}
+            className="bg-white text-black px-4 py-2 rounded-full"
           >
             Find song
           </button>
@@ -59,7 +52,7 @@ export default function Postcard02() {
 
       {results.length > 0 && (
         <div>
-          <p className="text-lime-600 text-lg mb-2">pick the song:</p>
+          <p className="text-gray-500 text-lg mb-2">pick the song:</p>
           <div className="flex gap-4">
             <div className="flex-1 bg-white rounded-xl p-4 shadow space-y-3">
               {results.map((track) => (
@@ -89,7 +82,7 @@ export default function Postcard02() {
             </div>
 
             {selectedTrack && (
-              <div className="w-80 bg-red-700 text-white rounded-xl p-4">
+              <div className="w-80 bg-white text-white rounded-xl p-4">
                 <img
                   src={selectedTrack.image || ''}
                   alt={selectedTrack.name}
