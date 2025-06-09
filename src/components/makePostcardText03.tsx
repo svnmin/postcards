@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { Track } from '@/types/spotifyTypes';
-import handleSubmit from '@/lib/firebase';
+import { handleSubmit } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 
-export default function Postcard03() {
+export default function MakePostcard03() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Track[]>([]);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
@@ -34,10 +34,18 @@ export default function Postcard03() {
     }
   };
 
+  // const onSubmit = async () => {
+  //   if (!message || !selectedTrack) return;
+  //   const id = await handleSubmit(message, selectedTrack);
+  //   // router.push(`/postcard/${id}`);
+  //   console.log(`/postcard/${id}`)
+  // };
   const onSubmit = async () => {
     if (!message || !selectedTrack) return;
     const id = await handleSubmit(message, selectedTrack);
-    router.push(`/postcard/${id}`);
+    const url = `${window.location.origin}/postcard/${id}`;
+    await navigator.clipboard.writeText(url);
+    alert(`Postcard link copied! \n${url}`);
   };
 
   return (

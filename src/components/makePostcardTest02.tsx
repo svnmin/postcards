@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Track } from '@/types/spotifyTypes';
 
 
-export default function Postcard02() {
+export default function MakePostcard02() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Track[]>([]);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);

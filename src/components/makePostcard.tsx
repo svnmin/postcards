@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import { Track } from "@/types/spotifyTypes";
 
 
-const Postcard : FC = () => {
+const MakePostcard : FC = () => {
   const [ query, setQuery ] = useState('');
   const [ results, setResults ] = useState<Track[]>([]);
   const [ chosenTrack, setChosenTrack ] = useState<Track | null>(null);
@@ -32,4 +32,4 @@ const Postcard : FC = () => {
   )
 }
 
-export default Postcard
+export default MakePostcard

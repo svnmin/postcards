@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, set } from 'firebase/database';
+import { getDatabase, ref, push, set, get, child } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,7 +14,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const handleSubmit = async(message : string, trackData : any) => {
+export async function handleSubmit(message : string, trackData : any){
   const db =getDatabase();
   const postcardRef = ref(db, 'postcards');
   const newPostcardRef = push(postcardRef);
@@ -27,4 +27,9 @@ const handleSubmit = async(message : string, trackData : any) => {
   const id = newPostcardRef.key;
   return id;
 }
-export default handleSubmit;
+export async function getPostcard(id : string){
+  const dbRef = ref(getDatabase(app));
+  const snapshot = await get(child(dbRef, `postcards/${id}`));
+  if(!snapshot.exists()) return null;
+  return snapshot.val();
+}
