@@ -20,11 +20,9 @@ export async function GET(request: NextRequest) {
         },
       }
     );
-
     if (!searchRes.ok) {
       return NextResponse.json({ error: 'Failed to fetch from Spotify API' }, { status: searchRes.status });
     }
-
     const data = await searchRes.json();
     const results = data.tracks.items.map((track: any) => ({
       id: track.id,
@@ -35,7 +33,6 @@ export async function GET(request: NextRequest) {
       external_url: track.external_urls.spotify,
       image: track.album.images?.[0]?.url ?? null,
     }));
-
     return NextResponse.json({ results }, { status: 200 });
   } catch (error) {
     console.error(error);

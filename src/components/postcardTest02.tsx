@@ -7,6 +7,7 @@ export default function Postcard02() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Track[]>([]);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+  const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -39,7 +40,7 @@ export default function Postcard02() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-full"
+            className="flex-1 px-4 py-2 border border-gray-600 rounded-full"
           />
           <button
             onClick={trackSearch}
@@ -57,8 +58,8 @@ export default function Postcard02() {
             <div className="flex-1 bg-white rounded-xl p-4 shadow space-y-3">
               {results.map((track) => (
                 <div key={track.id} className="border-b pb-2">
-                  <p className="font-bold text-sm">{track.name}</p>
-                  <p className="text-xs text-gray-600 mb-1">{track.artists}</p>
+                  <p className="font-bold text-sm text-black">{track.name}</p>
+                  <p className="text-xs text-black mb-1">{track.artists}</p>
                   <div className="flex gap-2 text-xs">
                     {track.preview_url && (
                       <a
@@ -82,22 +83,17 @@ export default function Postcard02() {
             </div>
 
             {selectedTrack && (
-              <div className="w-80 bg-white text-white rounded-xl p-4">
-                <img
-                  src={selectedTrack.image || ''}
-                  alt={selectedTrack.name}
-                  className="rounded mb-4"
-                />
-                <p className="font-bold text-lg mb-1">{selectedTrack.name}</p>
-                <p className="text-sm">Preview {selectedTrack.artists}</p>
-                <a
-                  href={selectedTrack.external_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block mt-4 underline"
+              <div className="w-125 bg-white text-black rounded-xl p-4">
+                <iframe
+                  src={`https://open.spotify.com/embed/track/${selectedTrack.id}`}
+                  width="100%"
+                  height="152"
+                  frameBorder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  className="rounded"
                 >
-                  Save on Spotify
-                </a>
+                </iframe>
               </div>
             )}
           </div>

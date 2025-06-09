@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getDatabase, ref, push, set } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -13,3 +14,17 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+const handleSubmit = async(message : string, trackData : any) => {
+  const db =getDatabase();
+  const postcardRef = ref(db, 'postcards');
+  const newPostcardRef = push(postcardRef);
+
+  await set(newPostcardRef, {
+    message,
+    track : trackData,
+    createdAt : Date.now(),
+  });
+  const id = newPostcardRef.key;
+  return id;
+}
+export default handleSubmit;

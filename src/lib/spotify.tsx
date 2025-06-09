@@ -10,7 +10,6 @@ export async function getToken() : Promise<string> {
     const clientId = process.env.SPOTIFY_CLIENT_ID;
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
     const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
-
     const res = await fetch('https://accounts.spotify.com/api/token', {
         method : 'POST',
         headers : {
