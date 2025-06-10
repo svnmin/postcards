@@ -35,11 +35,16 @@ export default function MakePostcard05() {
     }
   };
   const onSubmit = async () => {
-    if (!message || !selectedTrack) return;
-    const id = await handleSubmit(message, selectedTrack);
-    const url = `${window.location.origin}/postcard/${id}`;
-    await navigator.clipboard.writeText(url);
-    alert(`Postcard link copied! \n${url}`);
+    // if(!message || !selectedTrack) return;
+    if(!message || !selectedTrack){
+      setError('need to finish the postcard');
+      console.log('need to finish the postcard')
+    }else{
+      const id = await handleSubmit(message, selectedTrack);
+      const url = `${window.location.origin}/postcard/${id}`;
+      await navigator.clipboard.writeText(url);
+      alert(`Postcard link copied! \n${url}`);
+    }
   };
 
   return (

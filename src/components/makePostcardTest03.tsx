@@ -59,14 +59,14 @@ export default function MakePostcard03() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="what's the song?"
+              placeholder="( find your song here )"
               className="flex-1 px-4 py-2 border border-black bg-transparent text-black placeholder:text-black"
             />
             <button
               onClick={trackSearch}
               className="px-4 py-2 border border-black text-black"
             >
-              find song
+              search
             </button>
           </div>
           {results.length > 0 && (
