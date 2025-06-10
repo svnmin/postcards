@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Track } from '@/types/spotifyTypes';
-import { handleSubmit } from '@/lib/firebase';
+import { handleSubmit } from '@/lib/firebaseRTDB';
 import { useRouter } from 'next/navigation';
 
 export default function MakePostcard03() {

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Track } from '@/types/spotifyTypes';
-import { handleSubmit } from '@/lib/firebase';
+import { handleSubmit } from '@/lib/firebaseRTDB';
 import { useRouter } from 'next/navigation';
 
 export default function MakePostcard02() {
@@ -33,6 +33,7 @@ export default function MakePostcard02() {
       setLoading(false);
     }
   };
+
   const onSubmit = async () => {
     if (!message || !selectedTrack) return;
     const id = await handleSubmit(message, selectedTrack);
@@ -95,9 +96,7 @@ export default function MakePostcard02() {
                   <button
                     className="text-red-500 text-xs hover:underline"
                     onClick={() => setSelectedTrack(track)}
-                  >
-                    CHOOSE
-                  </button>
+                  >CHOOSE</button>
               </div>
             ))}
           </div>

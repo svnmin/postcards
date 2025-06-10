@@ -1,26 +1,14 @@
-import { FC } from "react";
+import { Track } from "@/types/spotifyTypes";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 
-const PostcardLayout : FC = () => {
-
-    return(
-        <div className="postcard-wrapper">
-            <div className="postcard">
-                <div className="postcard-inner">
-                    <div className="message-container">
-                        <input className="message"></input>
-                    </div>
-                    <div className="track-container">
-                        
-                    </div>
-                    <div className="info-container">
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    )
+export default function PostcardLayout(){
+    const [ query, setQuery] = useState('');
+    const [ result, setResult ] = useState<Track[]>([]);
+    const [ selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+    const [ loading, setLoading ] = useState(false);
+    const [ error, setError ] = useState('');
+    const [ message, setMessage ] = useState('');
+    const router = useRouter();
 }
-
-export default PostcardLayout;

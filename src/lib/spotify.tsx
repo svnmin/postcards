@@ -2,7 +2,6 @@ const tokenCache = {
     token : null as string | null,
     expiry : null as number | null,
 };
-
 export async function getToken() : Promise<string> {
     if(tokenCache.token && tokenCache.expiry && Date.now() < tokenCache.expiry){
         return tokenCache.token;

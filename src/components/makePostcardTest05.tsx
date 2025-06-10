@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { Track } from '@/types/spotifyTypes';
-import { handleSubmit } from '@/lib/firebase';
+// import { handleSubmit } from '@/lib/firebaseRTDB';
+import { handleSubmit } from '@/lib/firebaseFSDB';
 import { useRouter } from 'next/navigation';
 
 export default function MakePostcard05() {
@@ -46,8 +47,7 @@ export default function MakePostcard05() {
       <div className="w-full max-w-5xl h-[80vh] bg-white grid grid-cols-2 relative text-sm">
         {/* Center divider */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[520px] bg-black"></div>
-
-        {/* Left column: Message */}
+        {/* Left section: Message */}
         <div className="flex items-center justify-center">
           <input
             type="text"
@@ -57,8 +57,7 @@ export default function MakePostcard05() {
             className="w-[80%] text-center text-black outline-none bg-transparent placeholder:text-black placeholder:opacity-100 font-mono"
           />
         </div>
-
-        {/* Right column: Search, Results, Player, Button */}
+        {/* Right section: Search, Results, Player, Button */}
         <div className="flex flex-col items-center pt-6 relative w-full font-mono">
             {/* Track preview */}
             {selectedTrack && (
@@ -90,7 +89,6 @@ export default function MakePostcard05() {
                 search
                 </button>
             </div>
-
             {/* Results list */}
             <div className="w-[80%] max-h-[500px] overflow-y-auto space-y-3">
                 {results.map((track) => (
@@ -106,7 +104,6 @@ export default function MakePostcard05() {
                 </div>
                 ))}
             </div>
-
             {/* Submit button */}
             <button
                 onClick={onSubmit}

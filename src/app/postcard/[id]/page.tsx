@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { getPostcard } from '@/lib/firebase';
+// import { getPostcard } from '@/lib/firebaseRTDB';
+import { getPostcard } from '@/lib/firebaseFSDB';
 import OpenPostcard01 from '@/components/openPostcard01';
 
 interface PostcardProps {
