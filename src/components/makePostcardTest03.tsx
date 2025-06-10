@@ -33,13 +33,6 @@ export default function MakePostcard03() {
       setLoading(false);
     }
   };
-
-  // const onSubmit = async () => {
-  //   if (!message || !selectedTrack) return;
-  //   const id = await handleSubmit(message, selectedTrack);
-  //   // router.push(`/postcard/${id}`);
-  //   console.log(`/postcard/${id}`)
-  // };
   const onSubmit = async () => {
     if (!message || !selectedTrack) return;
     const id = await handleSubmit(message, selectedTrack);
@@ -50,17 +43,14 @@ export default function MakePostcard03() {
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center py-12 px-4">
-      <div
-        className="relative w-[960px] h-[680px] bg-white mx-auto shadow-lg"
-        style={{ boxShadow: '0 0 0 2px #000' }}
-      >
+      <div className="relative w-[960px] h-[680px] bg-white mx-auto">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[520px] bg-black"></div>
         <div className="w-1/2 h-full flex items-center justify-center">
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="(write your message here)"
-            className="w-full h-full bg-transparent text-center placeholder-gray-500 resize-none focus:outline-none"
+            className="w-100% h-100% bg-transparent text-center placeholder-gray-500 text-black resize-none focus:outline-none"
           />
         </div>
         <div className="absolute right-0 top-0 w-1/2 h-full flex flex-col justify-between p-6">

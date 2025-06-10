@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Track } from '@/types/spotifyTypes';
 import { handleSubmit } from '@/lib/firebase';
-import { useRouter } from 'next/navigation';
+
 
 export default function MakePostcard04() {
   const [query, setQuery] = useState('');
@@ -15,13 +16,12 @@ export default function MakePostcard04() {
   const router = useRouter();
 
   const trackSearch = async () => {
-    if (!query) return;
-
+    if(!query) return;
     setLoading(true);
     setError('');
     try {
       const res = await fetch(`/api/spotify?type=search&q=${encodeURIComponent(query)}`);
-      if (!res.ok) {
+      if(!res.ok) {
         throw new Error('Failed to fetch results');
       }
       const data = await res.json();
@@ -33,15 +33,8 @@ export default function MakePostcard04() {
       setLoading(false);
     }
   };
-
-  // const onSubmit = async () => {
-  //   if (!message || !selectedTrack) return;
-  //   const id = await handleSubmit(message, selectedTrack);
-  //   // router.push(`/postcard/${id}`);
-  //   console.log(`/postcard/${id}`)
-  // };
   const onSubmit = async () => {
-    if (!message || !selectedTrack) return;
+    if(!message || !selectedTrack) return;
     const id = await handleSubmit(message, selectedTrack);
     const url = `${window.location.origin}/postcard/${id}`;
     await navigator.clipboard.writeText(url);
@@ -50,31 +43,31 @@ export default function MakePostcard04() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-black text-black">
-      <div className="w-[90%] h-[90vh] bg-white flex border border-black">
+    <main className="">
+      <div className="">
         {/* Left side */}
-        <div className="w-1/2 h-full border-r border-black flex items-center justify-center">
+        <div className="">
           <textarea
             placeholder="( write your message here )"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-4/5 h-1/3 text-center bg-transparent placeholder-black/50 outline-none resize-none"
+            className=""
           />
         </div>
 
         {/* Right side */}
-        <div className="w-1/2 h-full relative flex items-center justify-center">
-          <div className="flex items-center border border-black w-4/5 px-2 py-1">
+        <div className="">
+          <div className="">
             <input
               type="text"
               placeholder="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="flex-1 bg-transparent outline-none placeholder-black/50"
+              className=""
             />
             <button
               onClick={trackSearch}
-              className="border-l border-black px-2 text-sm"
+              className=""
             >
               find song
             </button>
@@ -84,7 +77,7 @@ export default function MakePostcard04() {
           <button
             onClick={onSubmit}
             disabled={!message || !selectedTrack}
-            className="absolute bottom-4 right-4 border border-black px-3 py-1 text-sm disabled:text-black/30"
+            className=""
           >
             send postcard
           </button>
