@@ -8,6 +8,7 @@
         body{
             margin: 0;
             padding: 0;
+            font-family: Helvetica, sans-serif;
         }
         .container{
             width: 100vw;
@@ -29,12 +30,12 @@
         .postcard-top{
             width: 100%;
             height: 10%;
-            background: coral;
+            background: #fff;;
         }
         .postcard-body{
             width: 100%;
             height: 80%;
-            background: grey;
+            background: #fff;;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -42,7 +43,7 @@
         .section-left{
             width: 49.95%;
             height: 100%;
-            background-color: rgba(85, 137, 123, 0.947);
+            background-color:#fff;;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -54,6 +55,7 @@
             background: none;
             text-align: center;
             color: #000;
+            overflow: visible;
         }
         .message-input:focus{
             outline: none;
@@ -61,7 +63,6 @@
         textarea::placeholder{
             color: #000;
         }
-        textarea::sc
         .section-divider{
             width: 0.1%;
             height: 100%;
@@ -70,12 +71,44 @@
         .section-right{
             width: 49.95%;
             height: 100%;
-            background-color: rgba(0, 117, 85, 0.947);
+            background-color: #fff;;
+        }
+        .miniplayer-wrapper{
+            display: block;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+        .search-bar{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-input{
+            width: 70%;
+            height: 20px;
+            outline: none;
+            border: none;
+            background: none;
+            color: #000;
+        }
+        .search-input::placeholder{
+            color: #000;
+        }
+        .search-btn{
+            width: 15%;
+            height: 20px;
+            outline: none;
+            border: none;
+            background: none;
+            color: #000;
         }
         .postcard-bottom{
             width: 100%;
             height: 10%;
-            background: coral;
+            background: #fff;;
         }
     </style>
 </head>
@@ -96,16 +129,20 @@
                 </div>
                 <div class="section-divider"></div>
                 <div class="section-right">
-                    <div class="miniplayer-wrapper">
-                    </div>
-                    <input
-                        class="search-bar"
+                    <div class="miniplayer-wrapper"></div>
+                    <div class="search-bar">
+                        <input
+                        class="search-input"
                         type="text"
                         placeholder="( find your song here )"
-                    />
-                    <button class="search-btn">
-                        search
-                    </button>
+                        />
+                        <button class="search-btn">
+                            search
+                        </button>
+                    </div>
+                    <div class="search-results">
+
+                    </div>
                 </div>
             </div>
             <div class="postcard-bottom">

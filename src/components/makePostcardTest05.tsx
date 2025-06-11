@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Track } from '@/types/spotifyTypes';
+import { Track } from '@/types/types';
 // import { handleSubmit } from '@/lib/firebaseRTDB';
 import { handleSubmit } from '@/lib/firebaseFSDB';
 import { useRouter } from 'next/navigation';

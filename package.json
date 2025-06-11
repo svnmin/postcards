@@ -14,7 +14,8 @@
     "next": "15.3.3",
     "query-string": "^9.2.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "unsplash-js": "^7.0.19"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

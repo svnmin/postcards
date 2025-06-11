@@ -1,6 +1,6 @@
 "use client"
 import { FC, useState } from "react";
-import { Track } from "@/types/spotifyTypes";
+import { Track } from "@/types/types";
 
 
 const MakePostcard : FC = () => {

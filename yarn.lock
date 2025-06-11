@@ -4262,6 +4262,11 @@ unrs-resolver@^1.6.2:
     "@unrs/resolver-binding-win32-ia32-msvc" "1.7.8"
     "@unrs/resolver-binding-win32-x64-msvc" "1.7.8"
 
+unsplash-js@^7.0.19:
+  version "7.0.19"
+  resolved "https://registry.yarnpkg.com/unsplash-js/-/unsplash-js-7.0.19.tgz#36a4ee6d52f2438a5526c08c7018908debba10c7"
+  integrity sha512-j6qT2floy5Q2g2d939FJpwey1yw/GpQecFiSouyJtsHQPj3oqmqq3K4rI+GF8vU1zwGCT7ZwIGQd2dtCQLjYJw==
+
 uri-js@^4.2.2:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.4.1.tgz#9b1a52595225859e55f669d928f88c6c57f2a77e"
