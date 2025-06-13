@@ -10,19 +10,22 @@ export async function GET() {
   try{
     const result = await unsplash.photos.getRandom({
     orientation: 'landscape',
-    topicIds: ['Fh7zWo7dJP0'],
-});
+    topicIds: ['hmenvQhUmxM'],
+    });
     if(result.type === 'success'){
-        const photo = Array.isArray(result.response) ? result.response[0] : result.response;
-        console.log('Full photo:', JSON.stringify(photo, null, 2));//to check the metadata
-        return NextResponse.json({
-            url: photo.urls.regular,
-            user: {
-            name: photo.user.name,
-            username: photo.user.username,
-            },
-            link: photo.links.html,
-        });
+    
+      const photo = Array.isArray(result.response) ? result.response[0] : result.response;
+      //checking metadata
+      // console.log('Full photo:', JSON.stringify(photo, null, 2));
+      
+      return NextResponse.json({
+        url: photo.urls.regular,
+        user: {
+        name: photo.user.name,
+        username: photo.user.username,
+        },
+        link: photo.links.html,
+      });
     }else{
       console.error('Unsplash error:', result.errors);
       return NextResponse.json({ error: result.errors }, { status: 500 });

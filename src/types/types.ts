@@ -10,12 +10,11 @@ export type Track = {
 };
 
 //Unsplash API
-export type UnsplashUser = {
-  name: string;
-  username: string;
-}
 export type UnsplashImage = {
   url: string;
-  user: UnsplashUser;
   link: string;
-}
+  user: {
+    name: string;
+    username: string;
+  };
+};

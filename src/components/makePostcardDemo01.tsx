@@ -6,7 +6,7 @@ import { Track, UnsplashImage } from "@/types/types";
 import { handleSubmit } from "@/lib/firebaseFSDB";
 import { getRandomImage } from "@/lib/unsplash";
 
-export default function MakePostcard05() {
+export default function MakePostcardDemo01() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Track[]>([]);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
@@ -22,6 +22,7 @@ export default function MakePostcard05() {
       setImage(img);
     };
     fetchImage();
+    
   }, []);
 
   const trackSearch = async () => {
@@ -48,15 +49,10 @@ export default function MakePostcard05() {
       setError("need to finish the postcard");
       console.log("need to finish the postcard");
     } else {
-      try {
-        const id = await handleSubmit(message, selectedTrack, image);
-        const url = `${window.location.origin}/postcard/${id}`;
-        await navigator.clipboard.writeText(url);
-        alert(`Postcard link copied! \n${url}`);
-      } catch (err) {
-        setError("Failed to save postcard.");
-        console.error(err);
-      }
+      const id = await handleSubmit(message, selectedTrack, image);
+      const url = `${window.location.origin}/postcard/${id}`;
+      await navigator.clipboard.writeText(url);
+      alert(`Postcard link copied! \n${url}`);
     }
   };
 
