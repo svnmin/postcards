@@ -1,16 +1,14 @@
-export const dynamic = 'force-dynamic';
+
 import OpenPostcard from "@/components/openPostcard";
 import { getPostcard } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 
-interface Props {
-    params: {
-        id: string;
-    };
-}
+type PageParams = Promise<{id: string}>
 
-export default async function OpenPostcardPage({ params }: Props) {
-    const postcard = await getPostcard(params.id);
+export default async function OpenPostcardPage({ params }: {params : PageParams}) {
+    const { id } = await params
+    const postcard = await getPostcard(id);
+
     if (!postcard) return notFound();
 
     const { message, track, image } = postcard;
