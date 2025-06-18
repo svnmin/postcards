@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 const unsplash = createApi({
     accessKey: process.env.UNSPLASH_ACCESS_KEY!,
-    fetch: fetch as any,
+    fetch: fetch as typeof fetch,
 });
 
 export async function GET() {

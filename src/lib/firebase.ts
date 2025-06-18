@@ -1,6 +1,6 @@
 import { Track, UnsplashImage } from "@/types/types";
 import { initializeApp } from "firebase/app"
-import { addDoc, collection, doc, getDoc, getFirestore, Timestamp, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getFirestore, Timestamp } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,

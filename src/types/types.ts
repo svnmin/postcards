@@ -8,6 +8,17 @@ export type Track = {
     external_url: string;
     image: string | null;
 };
+export type SpotifyTrack = {
+    id: string;
+    name: string;
+    artists: { name: string }[];
+    album: {
+        name: string;
+        images: { url: string }[];
+    };
+    preview_url: string | null;
+    external_urls: { spotify: string };
+};
 
 //Unsplash API
 export type UnsplashImage = {

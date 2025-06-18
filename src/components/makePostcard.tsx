@@ -18,7 +18,6 @@ export default function MakePostcard() {
     const [message, setMessage] = useState('');
     const [image, setImage] = useState<UnsplashImage | null>(null);
 
-    const router = useRouter();
     const postcardRef = useRef<HTMLDivElement | null>(null);
     const [isFlipped, setIsFlipped] = useState(false);
 

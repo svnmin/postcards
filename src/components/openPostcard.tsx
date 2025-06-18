@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Track, UnsplashImage, PostcardProps } from "@/types/types";
+import { PostcardProps } from "@/types/types";
 
 import styled from "styled-components";
 

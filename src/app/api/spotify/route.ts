@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from '@/lib/spotify';
+import { SpotifyTrack, Track } from '@/types/types';
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -24,10 +25,10 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: 'Failed to fetch from Spotify API' }, { status: searchRes.status });
         }
         const data = await searchRes.json();
-        const results = data.tracks.items.map((track: any) => ({
+        const results : Track[] = data.tracks.items.map((track: SpotifyTrack) => ({
             id: track.id,
             name: track.name,
-            artists: track.artists.map((artist: any) => artist.name).join(', '),
+            artists: track.artists.map((artist) => artist.name).join(', '),
             album: track.album.name,
             preview_url: track.preview_url,
             external_url: track.external_urls.spotify,
