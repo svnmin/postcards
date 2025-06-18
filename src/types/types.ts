@@ -1,4 +1,4 @@
-//Spotify API
+//Spotify Types
 export type Track = {
     id: string;
     name: string;
@@ -8,6 +8,7 @@ export type Track = {
     external_url: string;
     image: string | null;
 };
+
 export type SpotifyTrack = {
     id: string;
     name: string;
@@ -20,7 +21,7 @@ export type SpotifyTrack = {
     external_urls: { spotify: string };
 };
 
-//Unsplash API
+//Unsplash Types
 export type UnsplashImage = {
     url: string;
     link: string;

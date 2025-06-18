@@ -2,11 +2,13 @@ import OpenPostcard from "@/components/openPostcard";
 import { getPostcard } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 
-export default async function OpenPostcardPage({
-    params,
-}: {
-    params: { id: string };
-}) {
+interface Props {
+    params: {
+        id: string;
+    };
+}
+
+export default async function OpenPostcardPage({ params }: Props) {
     const postcard = await getPostcard(params.id);
     if (!postcard) return notFound();
 
