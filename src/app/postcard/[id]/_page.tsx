@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import OpenPostcard from "@/components/openPostcard";
 import { getPostcard } from "@/lib/firebase";
 import { notFound } from "next/navigation";
