@@ -36,8 +36,3 @@ export type PostcardProps = {
     track: Track;
     image?: UnsplashImage
 };
-
-//OpenPostcard Page Params
-export type PageParams = {
-    params: { id: string };
-};
