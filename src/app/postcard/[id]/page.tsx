@@ -13,10 +13,12 @@ export default async function OpenPostcardPage({
     if (!postcard) return notFound();
 
     return (
-        <OpenPostcard
+        <>
+            <OpenPostcard
             message={postcard.message}
             track={postcard.track}
             image={postcard.image}
         />
+        </>
     );
 }
